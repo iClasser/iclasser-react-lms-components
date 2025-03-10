@@ -184,10 +184,10 @@ export default function Home() {
       <main>
         <section className="m-auto container rounded-md leading-0.4 rounded-b-none">
           <h1 className="text-2xl  px-3">
-            <strong>iClasser</strong> Playground
+            <strong>iClasser</strong> <code>Component</code> Playground
           </h1>
           <p className="px-3">
-            This is a playground for you to test your new components.
+            This is a playground for you to test your new components.<br/> To create a component run <code className='bg-gray-100 px-1 rounded-md'>npx create-iclasser-react-component</code>
           </p>
         </section>
 
