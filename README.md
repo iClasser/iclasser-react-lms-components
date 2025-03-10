@@ -11,10 +11,20 @@ For iClasser editing
 ## 2. Preview
 How it will interact with customer facing.
 
+# Create an example
+To create a new React component, use the following command:
+
+`npx create-iclasser-react-component <ComponentName>`
+Replace `<ComponentName>` with the name of the component you want to create.
 
 # Installation
 Install `node` and then run
 > `cd example`
+
 > `npm install`
+
 > `npm run dev`
 
+# Playground
+
+![Screenshot 2025-03-10 at 8 49 51 AM 1](https://github.com/user-attachments/assets/544c86a5-718a-4269-8753-f30c9eb396e2)
