@@ -36,8 +36,12 @@ const ComponentPropsToolbar = (props) => {
                 choiceGroup.choices.forEach((c) => {
                   if (c !== "default") {
                     setData({
-                      [c]:
-                        changedValue === "default" ? false : c === changedValue,
+                      value: {
+                        [c]:
+                          changedValue === "default" ? false : c === changedValue,
+                      },
+                      sectionIndex,
+                      componentIndex,
                     });
                   }
                 });
@@ -71,7 +75,11 @@ const ComponentPropsToolbar = (props) => {
                 checked={!!compProps[choiceKey]}
                 onChange={(e) => {
                   setData({
-                    [choiceKey]: e.target.checked,
+                    value: {
+                      [choiceKey]: e.target.checked,
+                    },
+                    sectionIndex,
+                    componentIndex,
                   });
                 }}
               />
@@ -94,7 +102,11 @@ const ComponentPropsToolbar = (props) => {
                 small
                 onChange={(changedValue) =>
                   setData({
-                    [choiceKey]: changedValue,
+                    value: {
+                      [choiceKey]: changedValue,
+                    },
+                    sectionIndex,
+                    componentIndex,
                   })
                 }
                 data={vals.map((value) => ({

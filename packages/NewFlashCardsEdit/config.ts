@@ -1,8 +1,8 @@
 import { EachOfProps, OneOfProps, MultiChoiceProps} from "@/funcs/getToolbarConfig";
 
-export const compKey = "LottieBlock";
+export const compKey = "FlashCards";
 
-export const LottieBlockPropsObj = {
+export const FlashCardsPropsObj = {
   [compKey]: {
     eachOfProps: {
       loop: "boolean",

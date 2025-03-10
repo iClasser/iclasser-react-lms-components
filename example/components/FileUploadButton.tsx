@@ -16,9 +16,11 @@ interface FileUploadButtonProps {
   catchError?: any;
   isOpen?: any;
   resize?: any;
+  modalOnly?: boolean;
 }
 const FileUploadButton = (props: FileUploadButtonProps) => {
-  const [showModal, setShowModal] = useState(false);
+  const { modalOnly } = props;
+  const [showModal, setShowModal] = useState(modalOnly ? true : false);
   const [inprogress, setInprogress] = useState(false);
   const type = props.type || "btn-primary";
   const style = `btn ${
@@ -35,9 +37,9 @@ const FileUploadButton = (props: FileUploadButtonProps) => {
   };
   return (
     <div className={props.classContainer}>
-      <Button className={style} onClick={() => handleShowModal(true)}>
+      {modalOnly ? null : <Button className={style} onClick={() => handleShowModal(true)}>
         {props.text ? props.text : "Upload"}
-      </Button>
+      </Button>}
       {showModal && (
         <StaticModal
           onClose={() => handleShowModal(false)}

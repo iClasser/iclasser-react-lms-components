@@ -1,1 +1,1 @@
-export { default as NewLottieBlockEdit } from './NewLottieBlockEdit';
+export { default as NewFlashcardsEdit } from './NewFlashcardsEdit';

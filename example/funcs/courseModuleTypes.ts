@@ -1,4 +1,4 @@
-export type ComponentPropTypes = string | 'LottieBlock';
+export type ComponentPropTypes = string | 'FlashCards';
 export type LangType = string; // Add more as needed
 export type CountryType = string; // Add more as needed
 export type LocaleTypes = `${LangType}-${CountryType}`;
@@ -66,3 +66,18 @@ export interface ModuleContentType {
 export interface ReservedPropsKeysTypes {
     [key: string]: boolean | string | undefined
 }
+
+export interface InsertMultipleContentVals {
+    list: {
+      textId: string;
+      value: string;
+    }[];
+    lang: string;
+    country: string;
+  }
+
+  export interface GenerateNewTextKeysArgs {
+    numberOfKeys: number;
+    prefix?: string;
+    prefixObject?: { [key: number]: string };
+  }

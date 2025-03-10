@@ -17,6 +17,3 @@ Install `node` and then run
 > `npm install`
 > `npm run dev`
 
-
-# NewLottieBlockEdit specific Component installation:
-> npm install @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome lottie-web

@@ -1,23 +1,24 @@
 "use client";
 
 import AppContext from "@/context/appContext";
-import NewLottieBlockEdit from "@/package/NewLottieBlockEdit";
+import NewFlashCardsEdit from "@/package/NewFlashCardsEdit";
 import React, { useState } from "react";
 import Editor from "@monaco-editor/react";
 import DEVELOPMENT_CONFIG from "@/package/development.config";
-import { LottieBlockPreviewStructureProps } from "@/package/NewLottieBlockEdit/preview";
+import { FlashCardsPreviewStructureProps } from "@/package/NewFlashCardsEdit/preview";
+import uniqid from 'uniqid';
 
-// Add index signature to LottieBlockPreviewStructureProps
-// interface LottieBlockPreviewStructureProps {
+// Add index signature to FlashCardsPreviewStructureProps
+// interface FlashCardsPreviewStructureProps {
 //   [key: string]: any;
 // }
-import { LocaleTypes } from "@/funcs/courseModuleTypes";
+import { LocaleTypes, InsertMultipleContentVals, ContentType, GenerateNewTextKeysArgs } from "@/funcs/courseModuleTypes";
 
 export default function Home() {
   const [isEditMode, setIsEditMode] = useState(true);
   const [content, setContent] = useState({});
   const [structureComponent, updateComponentStructure] = useState(
-    DEVELOPMENT_CONFIG.INITIAL_STRUCTURE as LottieBlockPreviewStructureProps
+    DEVELOPMENT_CONFIG.INITIAL_STRUCTURE as FlashCardsPreviewStructureProps
   );
   const [codingContents, setCodingContents] = useState(
     DEVELOPMENT_CONFIG.INITIAL_CODE_CONTENT
@@ -25,7 +26,7 @@ export default function Home() {
 
   const sectionIndex: number = 0;
   const componentIndex: number = 0;
-  const [textData, setTextData] = useState(
+  const [allContents, setTextData] = useState<ContentType>(
     DEVELOPMENT_CONFIG.INITIAL_TEXT_CONTENT
   );
   const [currentLang, setCurrentLang] = useState<LocaleTypes>(
@@ -41,20 +42,33 @@ export default function Home() {
       },
     }));
   };
-  const setProp = (data: any) => {
+  const setProp = ({
+    sectionIndex, 
+    currentComponentIndex,
+    value,
+  }: {
+    sectionIndex: number;
+    currentComponentIndex: number;
+    value: any;
+  }) => {
     updateComponentStructure((prev) => ({
       ...prev,
-      props: data,
+      props: value,
     }));
   };
+
   const setStructureVal = ({
     key,
     value,
     mainKey,
+    sectionIndex, 
+    currentComponentIndex,
   }: {
     key: string;
     value: any;
     mainKey?: string;
+    sectionIndex: number;
+    currentComponentIndex: number;
   }) => {
     if (mainKey) {
       if (structureComponent[mainKey] === undefined) {
@@ -82,6 +96,71 @@ export default function Home() {
     }));
   };
 
+  const setContentVal = (data: any) => {
+   const { 
+    textId, value, 
+    // lang, country 
+  } = data;
+    setTextData((prev) => ({
+      ...prev,
+      [textId]: value,
+    }));
+  }
+
+  
+  const insertMultipleContentVals = (data: InsertMultipleContentVals) => {
+    const { list, lang, country } = data;
+    list.forEach((item: any) => {
+      const { textId, value } = item;
+      setTextData((prev) => ({
+        ...prev,
+        [textId]: value,
+      }));
+    });
+  }
+
+  const deleteMultipleContentVals = (list: InsertMultipleContentVals['list']) => {
+    list.forEach((item) => {
+      const { textId } = item;
+      setTextData((prev) => {
+        const newTextData = { ...prev } as any;
+        if (newTextData[textId] !== undefined) {
+          delete newTextData[textId];
+        }
+        return newTextData;
+      });
+    });
+  }
+
+  const generateNewTextKeys = ({
+    numberOfKeys,
+    prefix = '',
+    prefixObject = {}
+  }: GenerateNewTextKeysArgs) => {
+    // prefixObject tells 
+    // what prefix to use for each index
+    const existingKeys = [...Object.keys(allContents)];
+
+    // generate new keys for each index
+    const newKeys = Array.from({ length: numberOfKeys }, (_, index) => {
+      const currentPrefix = prefixObject?.[index] || prefix || '';
+      while (true) {
+        let newKey = `${currentPrefix}_${uniqid()}`;
+        if (!existingKeys.includes(newKey)) {
+          return newKey;
+        }
+      }
+    });
+    return newKeys;
+  }
+
+
+  const textData = {
+    getText: (key: string) => {
+      return allContents[key] || "";
+    }
+  }
+
   return (
     <AppContext.Provider
       value={{
@@ -94,10 +173,12 @@ export default function Home() {
         componentIndex: 0,
         sectionIndex: 0,
         setTextData,
-        textData,
+        textData: allContents,
         setProp,
         mergeProps,
         setStructureVal,
+        generateNewTextKeys,
+        insertMultipleContentVals,
       }}
     >
       <main>
@@ -129,7 +210,7 @@ export default function Home() {
                   {isEditMode ? "Component Editor" : "Component Preview"}
                 </h2>
                 <div className="p-2 border border-gray-500/10 bg-gray-800 rounded-md min-h-96">
-                  <NewLottieBlockEdit
+                  <NewFlashCardsEdit
                     structureComponent={structureComponent}
                     codingContents={codingContents}
                     uploadOptions={{}}
@@ -138,7 +219,11 @@ export default function Home() {
                     currentLang={currentLang}
                     textData={textData}
                     setStructureVal={setStructureVal}
+                    setContentVal={setContentVal}
                     editMode={isEditMode}
+                    generateNewTextKeys={generateNewTextKeys}
+                    insertMultipleContentVals={insertMultipleContentVals}
+                    deleteMultipleContentVals={deleteMultipleContentVals}
                   />
                 </div>
               </div>
@@ -161,11 +246,11 @@ export default function Home() {
                 Text Data
                 <Editor
                   height="24vh"
-                  value={JSON.stringify(textData, null, 2)}
+                  value={JSON.stringify(allContents, null, 2)}
                   className="border border-blue-500 rounded-md p-2 bg-blue-300"
                   defaultLanguage="json"
                   options={{ readOnly: true }}
-                  defaultValue={JSON.stringify(textData, null, 2)}
+                  defaultValue={JSON.stringify(allContents, null, 2)}
                 />
               </div>
 
