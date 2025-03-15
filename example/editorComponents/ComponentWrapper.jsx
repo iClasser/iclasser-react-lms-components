@@ -70,7 +70,7 @@ const ComponentWrapper = (props) => {
   };
 
   return (
-    <div className=" border-2 border-blue-500/20 p-4 bg-white rounded-md">
+    <div className="border-2 border-blue-500/20 p-4 bg-white rounded-md">
       {props.editMode ? (
         <div>
           <div className="grid grid-cols-12 border-b bg-white">

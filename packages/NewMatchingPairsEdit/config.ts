@@ -1,11 +1,12 @@
 import { EachOfProps, OneOfProps, MultiChoiceProps} from "@/funcs/getToolbarConfig";
 
-export const compKey = "FlashCards";
+export const compKey = "MatchingPairs";
 
-export const FlashCardsPropsObj = {
+export const MatchingPairsPropsObj = {
   [compKey]: {
     eachOfProps: {
-      loop: "boolean",
+      shuffleLeft: "boolean",
+      shuffleRight: "boolean",
     } as EachOfProps,
 
     /**

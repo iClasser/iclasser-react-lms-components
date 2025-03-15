@@ -1,15 +1,15 @@
 "use client";
 
 import AppContext from "@/context/appContext";
-import NewFlashCardsEdit from "@/package/NewFlashCardsEdit";
+import NewMatchingPairsEdit from "@/package/NewMatchingPairsEdit";
 import React, { useState } from "react";
 import Editor from "@monaco-editor/react";
 import DEVELOPMENT_CONFIG from "@/package/development.config";
-import { FlashCardsPreviewStructureProps } from "@/package/NewFlashCardsEdit/preview";
+import { MatchPairsStructureProps } from "@/package/NewMatchingPairsEdit/preview";
 import uniqid from 'uniqid';
 
-// Add index signature to FlashCardsPreviewStructureProps
-// interface FlashCardsPreviewStructureProps {
+// Add index signature to MatchPairsStructureProps
+// interface MatchPairsStructureProps {
 //   [key: string]: any;
 // }
 import { LocaleTypes, InsertMultipleContentVals, ContentType, GenerateNewTextKeysArgs } from "@/funcs/courseModuleTypes";
@@ -18,7 +18,7 @@ export default function Home() {
   const [isEditMode, setIsEditMode] = useState(true);
   const [content, setContent] = useState({});
   const [structureComponent, updateComponentStructure] = useState(
-    DEVELOPMENT_CONFIG.INITIAL_STRUCTURE as FlashCardsPreviewStructureProps
+    DEVELOPMENT_CONFIG.INITIAL_STRUCTURE as MatchPairsStructureProps
   );
   const [codingContents, setCodingContents] = useState(
     DEVELOPMENT_CONFIG.INITIAL_CODE_CONTENT
@@ -210,7 +210,7 @@ export default function Home() {
                   {isEditMode ? "Component Editor" : "Component Preview"}
                 </h2>
                 <div className="p-2 border border-gray-500/10 bg-gray-800 rounded-md min-h-96">
-                  <NewFlashCardsEdit
+                  <NewMatchingPairsEdit
                     structureComponent={structureComponent}
                     codingContents={codingContents}
                     uploadOptions={{}}

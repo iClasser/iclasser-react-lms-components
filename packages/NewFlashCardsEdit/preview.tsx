@@ -26,13 +26,10 @@ export interface FlashCardsPreviewProps {
 
 const Preview = (props: FlashCardsPreviewProps) => {
   const {
-    // componentIndex,
     textData,
     structureComponent,
-    // codingContents,
   } = props;
   const {
-    // textId,
     props: compProps,
   } = structureComponent;
 

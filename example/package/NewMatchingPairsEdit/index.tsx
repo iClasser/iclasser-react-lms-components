@@ -2,8 +2,8 @@ import {
   ComponentWrapper,
   ComponentPropsToolbar,
 } from "@/editorComponents/index";
-import Preview, { FlashCardsPreviewStructureProps } from "./preview";
-import { compKey as componentNameKey, FlashCardsPropsObj } from "./config";
+import Preview, { MatchPairsStructureProps } from "./preview";
+import { compKey as componentNameKey, MatchingPairsPropsObj } from "./config";
 import Edit from "./edit";
 import getToolbarConfig from "@/funcs/getToolbarConfig";
 import {
@@ -23,11 +23,13 @@ import {
   ModuleCodingContentType,
 } from "@/funcs/courseModuleTypes";
 
-// FlashCards
+// MatchingPairs
 // ** Change when creating new component here ** //
-
-interface NewFlashCardsEditProps {
-  structureComponent: FlashCardsPreviewStructureProps;
+type PrefixObj = {
+  [key: number]: string;
+} | undefined;
+interface NewMatchingPairsProps {
+  structureComponent: MatchPairsStructureProps;
   codingContents: ModuleCodingContentType;
   uploadOptions: any;
   sectionIndex: number;
@@ -40,16 +42,20 @@ interface NewFlashCardsEditProps {
     key,
     value,
     mainKey,
+    sectionIndex, 
+    currentComponentIndex,
   }: {
     key: string;
     value: any;
     mainKey?: string;
+    sectionIndex: number;
+    currentComponentIndex: number;
   }) => void;
   generateNewTextKeys: (args: GenerateNewTextKeysArgs) => string[];
   insertMultipleContentVals?:(args: InsertMultipleContentVals) => void;
   deleteMultipleContentVals?: (args: InsertMultipleContentVals['list']) => void;
 }
-const NewFlashCardsEdit = (props: NewFlashCardsEditProps) => {
+const NewMatchingPairs = (props: NewMatchingPairsProps) => {
   const {
     structureComponent,
     textData,
@@ -67,7 +73,7 @@ const NewFlashCardsEdit = (props: NewFlashCardsEditProps) => {
   const { textId, props: compProps } = structureComponent;
   const [lang, country] = currentLang.split("-");
   const identifier = `${sectionIndex}_${componentIndex}`;
-  const COMP_PROP_TYPES = FlashCardsPropsObj?.FlashCards || {}; // COMPONENT_PROPS[componentNameKey] || {};
+  const COMP_PROP_TYPES = MatchingPairsPropsObj?.MatchingPairs || {}; // COMPONENT_PROPS[componentNameKey] || {};
 
   const {
     showOneOfProps,
@@ -93,13 +99,13 @@ const NewFlashCardsEdit = (props: NewFlashCardsEditProps) => {
   };
   // const { url } = compProps;
 
-  interface FlashCardSetContentVal {
+  interface SetContentVal {
     textId?: string;
     value?: string;
     lang?: string;
     country?: string;
   }
-  const setContentVal = (data: FlashCardSetContentVal) => {
+  const setContentVal = (data: SetContentVal) => {
     if (!props.setContentVal) return;
     const { textId, value, lang, country } = data;
     props.setContentVal({
@@ -149,4 +155,4 @@ const NewFlashCardsEdit = (props: NewFlashCardsEditProps) => {
   );
 };
 
-export default NewFlashCardsEdit;
+export default NewMatchingPairs;
