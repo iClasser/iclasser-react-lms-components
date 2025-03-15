@@ -5,7 +5,7 @@ Write a description about this PR here.
 Go over your PR and checkmark all the boxes.
 - [ ] Did you create preview and edit
 - [ ] Did you write unit test
-- [ ] Is this component compatable with mobile
+- [ ] Is this component compatible with mobile react native (Expo specifically)
 - [ ] Did you write documentation file `documentation.md`
 - [ ] Did you add CHANGELOG.md entry like example:
     - ```
