@@ -1,0 +1,13 @@
+{
+    "editor.suggestOnTriggerCharacters": false,
+    "editor.suggest.selectionMode": "never",
+    "editor.inlineSuggest.suppressSuggestions": false,
+    "editor.quickSuggestions": {
+        "other": "off"
+    },
+    "editor.snippetSuggestions": "none",
+    "terminal.integrated.suggest.suggestOnTriggerCharacters": false,
+    "editor.acceptSuggestionOnCommitCharacter": false,
+    "editor.parameterHints.enabled": true,
+    "typescript.inlayHints.parameterNames.suppressWhenArgumentMatchesName": true
+}

@@ -1,0 +1,45 @@
+{
+  "name": "@iclasser-react/lottie-block",
+  "version": "1.0.0",
+  "description": "iClasser React Library",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc && (if ls src/*.css 1> /dev/null 2>&1; then copyfiles -u 1 'src/*.css' dist; else echo 'No CSS files to copy'; fi)"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.5.0",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "copyfiles": "^2.4.1",
+    "@types/uniqid": "^5.3.4"
+  },
+  "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
+    "@fortawesome/react-fontawesome": "^0.2.2",
+    "lottie-web": "^5.12.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iClasser/iclasser-react-lms-components.git",
+    "directory": "packages/LottieBlock/package/dist-preview"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "react",
+    "iclasser",
+    "typescript",
+    "component",
+    "LottieBlock"
+  ],
+  "license": "MIT"
+}
