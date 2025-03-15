@@ -1,6 +1,6 @@
 import { LocaleTypes } from "@/funcs/courseModuleTypes";
-import { compKey } from "./NewFlashCardsEdit/config";
-import { FlashCardsPreviewStructureProps } from "./NewFlashCardsEdit/preview";
+import { compKey } from "./NewMatchingPairsEdit/config";
+import { MatchPairsStructureProps } from "./NewMatchingPairsEdit/preview";
 
 // This constent can be used inside FileUploader component
 const UPLOAD_URL1 =
@@ -12,34 +12,27 @@ const DEVELOPMENT_CONFIG = {
   DEFAULT_LOCALE: "en-US" as LocaleTypes,
   INITIAL_CODE_CONTENT: [],
   INITIAL_TEXT_CONTENT: {
-    flashcard1_front: "Verbal Evaluation",
-    flashcard1_back: "Your speech evaluator will deliver a verbal evaluation before the club meeting is finished. The verbal evaluation is in front of the club. ",
+    left_pair_1: "Verbal Evaluation",
+    right_pair_1:
+      "Your speech evaluator will deliver a verbal evaluation before the club meeting is finished. The verbal evaluation is in front of the club. ",
   },
   INITIAL_STRUCTURE: {
     type: compKey,
     props: {
-      flashcards: [
+      pairs: [
         {
-          id: "flashcard1",
-          front: "flashcard1_front",
-          front_image: UPLOAD_URL1,
-          back: "flashcard1_back",
-        },
-        {
-          id: "flashcard2",
-          front: "flashcard2_front",
-          front_image: "",
-          back: "flashcard2_back",
-        },
-        {
-          id: "flashcard3",
-          front: "flashcard1_front",
-          front_image: UPLOAD_URL1,
-          back: "flashcard1_back",
-        },
+          id: "1",
+          left: {
+            text: 'left_pair_1',
+            image: UPLOAD_URL1,
+          },
+          right: {
+            text: 'right_pair_1',
+          },
+        }
       ],
+      shuffleRight: true,
     },
-    textId: "",
-  } as FlashCardsPreviewStructureProps,
+  } as MatchPairsStructureProps,
 };
 export default DEVELOPMENT_CONFIG;

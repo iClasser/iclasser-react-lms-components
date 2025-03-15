@@ -1,4 +1,4 @@
-export type ComponentPropTypes = string | 'FlashCards';
+export type ComponentPropTypes = string | 'MatchingPairs';
 export type LangType = string; // Add more as needed
 export type CountryType = string; // Add more as needed
 export type LocaleTypes = `${LangType}-${CountryType}`;

@@ -1,1 +1,1 @@
-export { default as NewFlashcardsEdit } from './NewFlashcardsEdit';
+export { default as NewMatchingPairsEdit } from './NewMatchingPairsEdit';
