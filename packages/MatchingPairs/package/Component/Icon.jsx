@@ -1,0 +1,3 @@
+
+export const Icon = ({className}) => <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="circle" className={`${className} `} role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"></path></svg>;
+export const Name = <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="circle" className="text-blue-200 w-8 h-8" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"></path></svg>;
