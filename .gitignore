@@ -40,3 +40,5 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .DS_Store
+packages/**/dist-preview/dist/
+packages/**/dist-preview/node_modules/
