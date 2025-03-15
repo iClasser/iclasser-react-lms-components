@@ -25,17 +25,11 @@ import {
 
 // MatchingPairs
 // ** Change when creating new component here ** //
-<<<<<<<< HEAD:example/package/NewMatchingPairsEdit/index.tsx
 type PrefixObj = {
   [key: number]: string;
 } | undefined;
 interface NewMatchingPairsProps {
   structureComponent: MatchPairsStructureProps;
-========
-
-interface NewFlashCardsEditProps {
-  structureComponent: FlashCardsPreviewStructureProps;
->>>>>>>> c4dab8f8ce83c173e48085a70dcd860daa7310c5:packages/FlashCards/package/Component/index.tsx
   codingContents: ModuleCodingContentType;
   uploadOptions: any;
   sectionIndex: number;
@@ -48,14 +42,10 @@ interface NewFlashCardsEditProps {
     key,
     value,
     mainKey,
-    sectionIndex,
-    currentComponentIndex,
   }: {
     key: string;
     value: any;
     mainKey?: string;
-    sectionIndex: number;
-    currentComponentIndex: number;
   }) => void;
   generateNewTextKeys: (args: GenerateNewTextKeysArgs) => string[];
   insertMultipleContentVals?:(args: InsertMultipleContentVals) => void;
