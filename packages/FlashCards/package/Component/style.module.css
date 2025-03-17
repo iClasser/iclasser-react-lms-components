@@ -36,6 +36,7 @@
   border: 0;
   flex-grow: 1;
   margin: auto;
+  
 }
 
 .card div {
@@ -227,3 +228,54 @@
     transform: scale(1) translateX(1px) rotate(5deg);
   }
 }
+@keyframes borderAnimation {
+  0% {
+    border-color: #ff7e5f;
+  }
+  50% {
+    border-color: #feb47b;
+  }
+  100% {
+    border-color: #ff7e5f;
+  }
+}
+/* Border Animation */
+@keyframes borderAnimation {
+  0% {
+    border-color: #ff7e5f;
+  }
+  50% {
+    border-color: #feb47b;
+  }
+  100% {
+    border-color: #ff7e5f;
+  }
+}
+
+/* Add shadow animation */
+@keyframes shadowAnimation {
+  0% {
+    box-shadow: 0 5px 15px rgba(247, 186, 43, 0.4), 0 5px 15px rgba(234, 83, 88, 0.4);
+  }
+  50% {
+    box-shadow: 0 10px 30px rgba(247, 186, 43, 0.6), 0 10px 30px rgba(234, 83, 88, 0.6);
+  }
+  100% {
+    box-shadow: 0 5px 15px rgba(247, 186, 43, 0.4), 0 5px 15px rgba(234, 83, 88, 0.4);
+  }
+}
+
+.card {
+  animation: shadowAnimation 3s infinite; /* Apply shadow animation */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.02); /* Slight scale-up on hover */
+  box-shadow: 0 10px 30px rgba(247, 186, 43, 0.6), 0 10px 30px rgba(234, 83, 88, 0.6); /* Enhanced shadow on hover */
+}
+
+
+
+
+
