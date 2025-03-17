@@ -1,5 +1,5 @@
 {
-  "name": "@iclasser-react/flash-cards",
+  "name": "matching-pairs",
   "version": "1.0.0",
   "description": "Contains iClasser component.",
   "private": true,
@@ -8,18 +8,21 @@
     "email": "support@iclasser.com"
   },
   "scripts": {
-    "dev": "next dev",
-    "build": "next build && npm run preview-pre-publish",
+    "dev": "next dev --turbopack",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "test": "jest --watch",
-    "test:ci": "jest --ci",
-    "clean": "rm -rf .next && rm -rf node_modules && rm -rf package/dist-preview/node_modules && rm -rf package/dist-preview/dist",
-    "setup": "npm install && npm run build",
-    "preview-pre-publish": "node ./script/preview-pre-publish.js"
+    "test:ci": "jest --ci"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.7.2",
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
+    "@fortawesome/react-fontawesome": "^0.2.2",
+    "@monaco-editor/react": "^4.7.0",
     "@testing-library/jest-dom": "^6.1.5",
+    "daisyui": "^3.6.4",
+    "lottie-web": "^5.12.2",
     "next": "15.2.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
